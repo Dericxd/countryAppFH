@@ -1,0 +1,74 @@
+<table class="table table-md mt-2 w-full">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>&Iacute;cono</th>
+      <th>Bandera</th>
+      <th>Nombre</th>
+      <th>Capital</th>
+      <th>Poblaci&oacute;n</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (country of countries(); track country.cca2; let index = $index) {
+    <tr>
+      <td>{{ index + 1 }}</td>
+      <td>{{ country.flag }}</td>
+      <td>
+        <img
+          [src]="country.flagPng"
+          [alt]="country.name"
+          class="w-15 rounded-md shadow-md"
+        />
+      </td>
+      <td>{{ country.name }}</td>
+      <td>{{ country.capital }}</td>
+      <td>
+        <span class="badge badge-info">
+          {{ country.population | number }}
+        </span>
+      </td>
+      <td>
+        <a
+          class="link-primary cursor-pointer"
+          [routerLink]="['/country/by', country.cca2]"
+          >M&aacute;s informaci&oacute;n</a
+        >
+      </td>
+    </tr>
+    }
+
+    <!--  -->
+    @if (errorMessage()) {
+    <tr>
+      <td colspan="8" class="text-center">
+        <div class="alert alert-error alert-soft mt-2">
+          <h3 class="text-danger">
+            {{ errorMessage() }}
+          </h3>
+        </div>
+      </td>
+    </tr>
+    }
+
+    <!--  -->
+    @if (countries().length ===0 && !isLoading()) {
+    <tr>
+      <td colspan="8" class="text-center">
+        <span class="text-secundary">No se encontraron resultados.</span>
+      </td>
+    </tr>
+    }
+
+    <!--  -->
+    @if (isLoading() ) {
+    <tr>
+      <td colspan="8" class="text-center">
+        buscando resultados...
+        <span class="loading loading-spinner text-primary"></span>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
