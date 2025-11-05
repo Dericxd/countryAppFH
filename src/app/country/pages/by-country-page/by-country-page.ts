@@ -30,7 +30,7 @@ export class ByCountryPage {
   countryResourse = resource({
     params: () => ({ query: this.query() }),
     loader: async({params}) => {
-      if (!this.query().trim()) return [];
+      if (!this.query()) return [];
 
       return await firstValueFrom(
         this.CountryService.searchByCountry(params.query)
