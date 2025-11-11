@@ -50,4 +50,21 @@ export class CountryService {
       )
   }
 
+  //? Buscar pais por codigo alpha
+  searchCountryByAlphaCode( code: string ): Observable<Country | undefined> {
+    const url = `${ API_URL }/alpha/${ code }`;
+
+    return this.http.get<RESTCountry[]>(url).pipe(
+        map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
+        // map((countries) => countries.at(0)),
+        map((countries) => countries[0]),
+        catchError((error) => {
+          console.log(error);
+          return throwError(
+            () => new Error(`No se encontro un pais con ese codigo: ${code}`)
+          );
+        })
+      )
+  }
+
 }

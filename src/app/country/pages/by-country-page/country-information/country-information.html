@@ -1,0 +1,77 @@
+<section class="mt-15">
+  <h1 class="text-3xl">{{ country().name }}</h1>
+  <h2 class="text-3xl font-thin">
+    Poblaci&oacute;n: {{ country().population | number }}
+  </h2>
+  <!-- Bandera  -->
+  <!-- <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img
+        alt="daisy"
+        src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp"
+      />
+    </div>
+    <div class="diff-item-2" role="img">
+      <img alt="daisy" src="{{ country().flagPng }}" />
+    </div>
+    <div class="diff-resizer"></div>
+  </figure>
+
+  <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img alt="daisy" src="{{ country().flagSvg }}" />
+    </div>
+    <div class="diff-item-2" role="img">
+      <div class="bg-base-200 grid place-content-center text-9xl font-black">
+        {{ country().name }}
+      </div>
+    </div>
+    <div class="diff-resizer"></div>
+  </figure> -->
+  <!-- Bandera  -->
+</section>
+
+<section class="stats shadow">
+  <div class="stat place-items-center">
+    <div class="stat-title">Poblaci&oacute;n</div>
+    <div class="stat-value">{{ country().population | number }}</div>
+    <div class="stat-desc">Desde {{ currentYear() }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Nombre</div>
+    <div class="stat-value text-secondary">{{ country().name }}</div>
+    <div class="stat-desc text-secondary pointer">{{ country().region }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Sub Regi&oacute;n</div>
+    <div class="stat-value">{{ country().subRegion }}</div>
+    <div class="stat-desc">{{ country().map }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Continente</div>
+    <div class="stat-value text-secondary">{{ country().continents }}</div>
+    <div class="stat-desc text-secondary">{{ country().borders }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Bandera</div>
+    <div class="stat-value">{{ country().flag }}</div>
+  </div>
+</section>
+
+<section class="diff aspect-16/9" tabindex="0">
+  <div class="diff-item-1" role="img" tabindex="0">
+    <img
+      [alt]="country().name"
+      [src]="country().flagSvg"
+      class="blur brightness-50"
+    />
+  </div>
+  <div class="diff-item-2" role="img">
+    <img [alt]="country().name" [src]="country().flagSvg" />
+  </div>
+  <div class="diff-resizer"></div>
+</section>

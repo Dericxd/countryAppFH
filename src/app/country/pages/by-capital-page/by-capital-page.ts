@@ -7,7 +7,7 @@ import { SearchInput } from "../../components/search-input/search-input";
 import { CountryService } from '../../services/country-service';
 
 @Component({
-  selector: 'app-by-capital-page',
+  selector: 'by-capital-page',
   imports: [CountryList, SearchInput],
   templateUrl: './by-capital-page.html',
 })

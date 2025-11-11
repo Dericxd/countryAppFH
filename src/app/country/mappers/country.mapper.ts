@@ -8,10 +8,18 @@ export class CountryMapper {
       cca2: restCountry.cca2,
       flag: restCountry.flag,
       flagPng: restCountry.flags.png,
+      flagSvg: restCountry.flags.svg,
       name: restCountry.translations['spa']?.common || restCountry.name.common,
       // capital: restCountry.capital. ? restCountry.capital[0] : 'No Capital',
       capital: restCountry.capital ? restCountry.capital[0] : 'No Capital',
       population: restCountry.population,
+      region: restCountry.region,
+      subRegion: restCountry.subregion,
+      languages: restCountry.languages ? Object.values(restCountry.languages) : [],
+      currencies: restCountry.currencies ? Object.values(restCountry.currencies).map( curr => curr.name ) : [],
+      borders: restCountry.borders ? restCountry.borders : [],
+      continents: restCountry.continents ? restCountry.continents[0] : '',
+      map: restCountry.maps.googleMaps ? restCountry.maps.googleMaps : '',
     }
   }
 

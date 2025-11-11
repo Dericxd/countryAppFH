@@ -13,7 +13,7 @@ import { CountryService } from '../../services/country-service';
 })
 export class ByCountryPage {
 
-  CountryService = inject(CountryService);
+  countryService = inject(CountryService);
   query = signal('');
 
   //? Usando rxResource
@@ -30,10 +30,10 @@ export class ByCountryPage {
   countryResourse = resource({
     params: () => ({ query: this.query() }),
     loader: async({params}) => {
-      if (!this.query()) return [];
+      if (!this.query().trim()) return [];
 
       return await firstValueFrom(
-        this.CountryService.searchByCountry(params.query)
+        this.countryService.searchByCountry(params.query)
       );
     }
   })
