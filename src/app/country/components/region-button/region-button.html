@@ -1,0 +1,19 @@
+<div class="flex flex-auto row-auto justify-center gap-2 flex-wrap">
+  <!-- <button class="btn btn-outline">Default</button>
+  <button class="btn btn-outline btn-primary">Africa</button>
+  <button class="btn btn-outline btn-secondary">Americas</button>
+  <button class="btn btn-outline btn-accent">Asia</button>
+  <button class="btn btn-outline btn-info">Antarctic</button>
+  <button class="btn btn-outline btn-success">Europa</button>
+  <button class="btn btn-outline btn-warning">Oceania</button>
+  <button class="btn btn-outline btn-error">error</button> -->
+  @for (region of regions; track region) {
+  <button
+    class="btn btn-outline m-2 w-[100px]"
+    (click)="selectRegion(region)"
+    [class.btn-secondary]="region === selectedRegion()"
+  >
+    {{ region }}
+  </button>
+  }
+</div>

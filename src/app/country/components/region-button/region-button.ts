@@ -1,17 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
-import { RegionButton } from "../../components/region-button/region-button";
 import { Region } from '../../interfaces/region-interfaces';
+import { CountryService } from '../../services/country-service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { of } from 'rxjs';
-import { CountryService } from '../../services/country-service';
-import { CountryList } from "../../components/country-list/country-list";
 
 @Component({
-  selector: 'by-region-page',
-  imports: [RegionButton, CountryList],
-  templateUrl: './by-region-page.html',
+  selector: 'region-button',
+  imports: [],
+  templateUrl: './region-button.html',
 })
-export class ByRegionPage {
+export class RegionButton {
 
   countryService = inject(CountryService);
 
@@ -33,11 +31,11 @@ export class ByRegionPage {
   countryResource = rxResource({
     params: () => ({region: this.selectedRegion() }),
     stream: ({ params }) => {
-    console.log("🚀 ~ ByRegionPage ~ params:", params)
-
-      if (!params.region)  return of([]);
+      console.log("🚀 ~ RegionButton ~ request:", params)
+      if (!params.region) return of([]);
 
       return this.countryService.searchByRegion(params.region);
-    },
+    }
   })
+
 }

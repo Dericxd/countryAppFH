@@ -17,26 +17,26 @@ export class ByCapitalPage {
   query = signal('');
 
   //? Usando rxResource
-  /* countryResource = rxResource ({
+  countryResource = rxResource ({
     params: () => ({ query: this.query()}),
-    request: ({params}) => {
-      if (!this.query().trim()) return of[];
+    stream: ({params}) => {
+      if (!params.query) return of([]);
 
       return this.CountryService.searchByCapital(params.query)
     }
-  }) */
+  })
 
   //? Usando resource
-  countryResource = resource({
-    params: () => ({ query: this.query()}),
-    loader: async({params}) => {
-      if (!this.query()) return [];
+  // countryResource = resource({
+  //   params: () => ({ query: this.query()}),
+  //   loader: async({params}) => {
+  //     if (!this.query()) return [];
 
-      return await firstValueFrom(
-        this.CountryService.searchByCapital(params.query)
-      );
-    }
-  })
+  //     return await firstValueFrom(
+  //       this.CountryService.searchByCapital(params.query)
+  //     );
+  //   }
+  // })
 
 
   /* isLoading = signal(false);
